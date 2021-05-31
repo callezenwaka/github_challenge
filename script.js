@@ -35,7 +35,7 @@ const baseUrl = "https://api.github.com/graphql";
 
 // get github token
 const github_data = {
-    "token": "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",
+    "token": "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",
     // "hinsencamp": "hinsencamp",
 }
 
