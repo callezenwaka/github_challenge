@@ -1,7 +1,7 @@
 # github_challenge
 Buycoins Frontend role github clone challenge
 
-# Find the demo page
+## Find the demo page
 <a href="https://buycoins-github-challenge.netlify.app/">Demo Page</a>
 
 ## Resources:
