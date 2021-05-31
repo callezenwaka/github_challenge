@@ -64,7 +64,8 @@ async function fetchUser(e) {
     const search = document.querySelector('#search');
     const value = JSON.stringify(search.value.trim());
     e.preventDefault();
-
+    console.log(value);
+    // fetch user data
     fetch(baseUrl, {
         method: "POST",
         headers: headers,
