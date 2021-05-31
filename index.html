@@ -33,10 +33,10 @@
                                 <input type="text" class="header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus" id="search" data-hotkey="s,/" name="q" value="" placeholder="Search GitHub" data-unscoped-placeholder="Search GitHub" data-scoped-placeholder="Search" autocapitalize="off" aria-autocomplete="list" aria-controls="jump-to-results" aria-label="Search GitHub" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" spellcheck="false" autocomplete="off" aria-activedescendant="jump-to-suggestion-search-global">
                                 <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="P3aGwkpJsIU53WYxSdoOA/DB6z2ae1AuUifg91/6HTn55tjILUAd69auNoR0hBqO7MNFu7LThHTeo5i1z43rNA==">
                                 <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
-                                <div class="Box position-absolute overflow-hidden jump-to-suggestions js-jump-to-suggestions-container searching d-none">
+                                <div class="Box position-absolute overflow-hidden jump-to-suggestions js-jump-to-suggestions-container searching d-none" id="completed">
                                     <ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container js-active-navigation-container">
                                         <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search navigation-focus searching d-none" role="option" id="jump-to-suggestion-search-global" aria-selected="true">
-                                            <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" onclick="fetchUser(event);" id="anchor" href="" data-item-type="global_search" data-target-type="Search">
+                                            <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" onclick="renderRepos(event);" id="anchor" href="" data-item-type="global_search" data-target-type="Search">
                                                 <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center">
                                                     <svg height="16" width="16" style="display: none;" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo searching d-none" title="Repository" aria-label="Repository" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
                                                     <svg height="16" width="16" style="display: none;" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project searching d-none" title="Project" aria-label="Project" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path></svg>
@@ -126,206 +126,485 @@
             </div>
         </header>
         <main class="main">
-            <div class="profile--container">
-                <div class="profile--bio">
-                    <div class="profile--avatar">
-                        <a href="https://github.com/account" class="avatar--link">
-                            <img title="Change your profile picture" style="height:auto;" alt="" width="260" height="260" class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/29546622?v=4">
-                        </a>
-                    </div>
-                    <div class="profile--name">
-                        <h1 class="name--wrapper">
-                            <span class="full--name">callezenwaka</span>
-                            <span class="user--name">callezenwaka</span>
-                        </h1>
-                    </div>
-                </div>
-                <div class="profile--status">
-                    <div class="status--wrapper">
-                        <div class="status--emoji">
-                            <svg class="emoji--item" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
-                                <path fill-rule="evenodd" fill="#586069" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM5 8a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zM5.32 9.636a.75.75 0 011.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0 1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 111.222.87l-.614-.431c.614.43.614.431.613.431v.001l-.001.002-.002.003-.005.007-.014.019a1.984 1.984 0 01-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946 0-1.652-.308-2.126-.63a3.32 3.32 0 01-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 01.183-1.044h.001z"></path>
-                            </svg>
-                        </div>
-                        <div class="status--text">
-                            <span class="color-text-secondary">Set status</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="Profile--description">
-                    <div class=profile--skills>
-                        Biomedical engineer|programmer|web development enthusiast | Twitter: 
-                        <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/callezenwaka/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/callezenwaka">@callezenwaka</a>
-                    </div>
-                </div>
-                <div class="profile--edit">
-                    <button name="button" type="button" class="btn btn--block">Edit profile</button>
-                </div>
-                <div class="profile--interactions">
-                    <div class="interactions--wrapper">
-                        <a class="interaction--link" href="https://github.com/callezenwaka?tab=followers">
-                            <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="interaction--item">
-                                <path fill-rule="evenodd" d="M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z"></path>
-                            </svg>
-                            <span class="">4</span>
-                            followers
-                        </a>
-                        ·
-                        <a class="interaction--link" href="https://github.com/callezenwaka?tab=following">
-                            <span class="">33</span>
-                            following
-                        </a>
-                        ·
-                        <a class="interaction--link" href="https://github.com/callezenwaka?tab=stars">
-                            <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="interaction--item">
-                                <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
-                            </svg>
-                            <span class="">133</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="profile--achievements">
-                    <h2 class="achievement--header">Achievements</h2>
-                    <div class="badge--wrapper">
-                        <div class="position-relative">
-                            <a href="https://archiveprogram.github.com/" class="d-inline-block">
-                                <img alt="Arctic Code Vault Contributor" width="64px" src="https://github.githubassets.com/images/modules/profile/badge--acv-64.png">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="main--container">
-                <div class="main--wrapper" style="z-index:3;">
-                    <nav class="main--nav" data-pjax="" aria-label="User profile">
-                        <a class="nav--link" href="/callezenwaka">
-                            <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
-                                <path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path>
-                            </svg>
-                            Overview
-                        </a>
-                        <a aria-current="page" class="nav--link selected" href="/callezenwaka?tab=repositories">
-                            <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
-                                <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
-                            </svg>
-                            Repositories
-                            <span title="60" data-view-component="true" class="counter">60</span>
-                        </a>
-                        <a class="nav--link" href="/callezenwaka?tab=projects">
-                            <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
-                                <path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path>
-                            </svg>
-                            Projects
-                            <span title="0" style="display: none!important;" data-view-component="true" class="counter">0</span>
-                        </a>
-                            <a class="nav--link" href="/callezenwaka?tab=packages">
-                            <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="octicon octicon-package UnderlineNav-octicon hide-sm">
-                                <path fill-rule="evenodd" d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z"></path>
-                            </svg>
-                            Packages
-                        </a>
-                    </nav>
-                </div>
-                <div>
-                    <div class="main--repo">
-                        <div class="repo--header">
-                            <a href="/new" class="btn new--link">
-                                <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="octicon octicon-repo mr-1">
-                                    <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
-                                </svg>
-                                New
-                            </a>
-                            <div class="filter">
-                                <form>
-                                    <div class="form--wrapper">
-                                        <div class=form--item>
-                                            <input type="hidden" name="tab" value="repositories">
-                                            <input type="search" id="your-repos-filter" name="q" class="form--input" placeholder="Find a repository…" autocomplete="off" aria-label="Find a repository…" value="" data-throttled-autosubmit="">
-                                        </div>
-                                        <div class="form--options">
-                                            <details class="option--item" id="type--options" style="margin-left:0px!important">
-                                                <summary class="btn" aria-haspopup="menu" role="button">
-                                                    <span>Type</span>
-                                                    <span>&#9662;</span>
-                                                </summary>
-                                            </details>
-                                            <details class="option--item" id="language--options">
-                                                <summary class="btn" aria-haspopup="menu" role="button">
-                                                    <span>Language</span>
-                                                    <span>&#9662;</span>
-                                                </summary>
-                                            </details>
-                                            <details class="option--item" id="sort--options">
-                                                <summary class="btn" aria-haspopup="menu" role="button">
-                                                    <span>Sort</span>
-                                                    <span>&#9662;</span>
-                                                </summary>
-                                            </details>
-                                        </div>
-                                    </div>
-                                </form>
+            <div class="main--nav--big" style="z-index:3;">
+                <div class="main--nav--big--wrapper">
+                    <div data-view-component="true" class="main--nav--big--wrapper--item">
+                        <div data-view-component="true" class="main--nav--big--item left">          
+                            <div class="user--profile">
+                                <div class="user--profile--mini--card">
+                                    <span class="user--profile--mini---avatar">
+                                        <img class="main--avatar--user" src="https://avatars.githubusercontent.com/u/22170286?s=64&amp;v=4" width="32" height="32" alt="@callezenwaka">
+                                    </span>
+                                    <span class="user--name">
+                                        <strong>callezenwaka</strong>
+                                        <span class="user-following-container">
+                                            <span class="follow d-block">
+                                                <a class="btn btn-sm mini-follow-button " data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;follow button&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/callezenwaka?tab=repositories&amp;_pjax=%23js-pjax-container&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="6cc1aff401fef37ea245544e69808f77b476fc5bc465c73383c4598a79eb3354" href="/login?return_to=%2Fcallezenwaka%3Ftab%3Drepositories">Follow</a>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="repo--list" id="user-repositories-list">
-                            <ul data-filterable-for="your-repos-filter" data-filterable-type="substring">
-                                <li class="list--item">
-                                    <div class="repo--wrapper">
-                                        <div class="repo--item">
-                                            <h3 class="">
-                                                <a href="/callezenwaka/eatwell" class="repo--link">eatwell</a>
-                                            </h3>
-                                            <span class="fork--item">
-                                                Forked from
-                                                <a class="fork--link" href="/MicrosoftDocs/ml-basics">MicrosoftDocs/ml-basics</a>
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <p class="repo--description" itemprop="description">
-                                                Exercise notebooks for Machine Learning modules on Microsoft Learn
-                                            </p>
-                                        </div>
-                                        <div class="repo--footer">
-                                            <span class="language--wrapper">
-                                                <span class="repo-language-color" style="background-color: #2c3e50"></span>
-                                                <span itemprop="programmingLanguage">Vue</span>
-                                            </span>
-                                            <a class="forked--icon" href="/callezenwaka/ml-basics/network/members">
-                                                <svg aria-label="fork" role="img" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
-                                                    <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
-                                                </svg>
-                                                700
-                                            </a>
-                                            <span class="license">
-                                                <svg class="" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M8.75.75a.75.75 0 00-1.5 0V2h-.984c-.305 0-.604.08-.869.23l-1.288.737A.25.25 0 013.984 3H1.75a.75.75 0 000 1.5h.428L.066 9.192a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.514 3.514 0 00.686.45A4.492 4.492 0 003 11c.88 0 1.556-.22 2.023-.454a3.515 3.515 0 00.686-.45l.045-.04.016-.015.006-.006.002-.002.001-.002L5.25 9.5l.53.53a.75.75 0 00.154-.838L3.822 4.5h.162c.305 0 .604-.08.869-.23l1.289-.737a.25.25 0 01.124-.033h.984V13h-2.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-2.5V3.5h.984a.25.25 0 01.124.033l1.29.736c.264.152.563.231.868.231h.162l-2.112 4.692a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.517 3.517 0 00.686.45A4.492 4.492 0 0013 11c.88 0 1.556-.22 2.023-.454a3.512 3.512 0 00.686-.45l.045-.04.01-.01.006-.005.006-.006.002-.002.001-.002-.529-.531.53.53a.75.75 0 00.154-.838L13.823 4.5h.427a.75.75 0 000-1.5h-2.234a.25.25 0 01-.124-.033l-1.29-.736A1.75 1.75 0 009.735 2H8.75V.75zM1.695 9.227c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327l-1.305 2.9zm10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327l-1.305 2.9z"></path> 
-                                                </svg>
-                                                MIT License
-                                            </span>
-                                            Updated
-                                            <relative-time datetime="2021-05-27T13:43:40Z" class="repo--update" title="May 27, 2021, 2:43 PM GMT+1">2 days ago</relative-time>
-                                        </div>
-                                    </div>
-                                    <div class="star--wrapper">
-                                        <div class="star--align">
-                                            <div class="star--display">
-                                                <form class="" action="/callezenwaka/ml-basics/star" method="post">
-                                                    <input type="hidden" name="context" value="user_stars">
-                                                    <button class="btn star--btn" type="submit" aria-label="Star this repository" title="Star callezenwaka/ml-basics">
-                                                        <svg class="octicon octicon-star mr-1" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
-                                                            <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
-                                                        </svg>
-                                                        Star
-                                                    </button>
-                                                </form>
+                        <div data-view-component="true" class="main--nav--big--item right">          
+                            <div class="nav--big--wrapper">
+                                <nav class="nav--big--item" data-pjax="" aria-label="User profile">
+                                    <a class="nav--big--link" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:22170286,&quot;target&quot;:&quot;TAB_OVERVIEW&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/callezenwaka?tab=repositories&amp;_pjax=%23js-pjax-container&quot;}}" data-hydro-click-hmac="b5e92915ec6be978479178b28ed8d9b1f8f3e5a8c42e59f454e4d1121e416aa1" href="/callezenwaka">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="icon">
+                                            <path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path>
+                                        </svg>
+                                        Overview
+                                    </a>
+                                    <a aria-current="page" class="nav--big--link selected" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:22170286,&quot;target&quot;:&quot;TAB_REPOSITORIES&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/callezenwaka?tab=repositories&amp;_pjax=%23js-pjax-container&quot;}}" data-hydro-click-hmac="79f3330a4c8621ad39a84b42287d6ac438fded131a449443e1f3a79aa9c15aae" href="/callezenwaka?tab=repositories">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="icon">
+                                            <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+                                        </svg>
+                                        Repositories
+                                        <span title="50" data-view-component="true" id="repositories" class="counter">50</span>
+                                    </a>
+                                    <a class="nav--big--link" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:22170286,&quot;target&quot;:&quot;TAB_PROJECTS&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/callezenwaka?tab=repositories&amp;_pjax=%23js-pjax-container&quot;}}" data-hydro-click-hmac="922930b12c3bb9d99c6c70deb53b996bf4fec9f8f7f8eb64113c806a347e1b7c" href="/callezenwaka?tab=projects">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="icon">
+                                            <path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path>
+                                        </svg>
+                                        Projects
+                                        <span title="0" style="display: none!important;" data-view-component="true" class="counter">0</span>
+                                    </a>
+                                        <a class="nav--big--link" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:22170286,&quot;target&quot;:&quot;TAB_PACKAGES&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/callezenwaka?tab=repositories&amp;_pjax=%23js-pjax-container&quot;}}" data-hydro-click-hmac="e9b76ca5d35810af2a58d33c56d58ba72b16bf5d8df12099057455206e4cccf6" href="/callezenwaka?tab=packages">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="icon">
+                                            <path fill-rule="evenodd" d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z"></path>
+                                        </svg>
+                                        Packages
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="main--container--wrapper">
+                <div class="main--container--wrapper--item">
+                    <div class="profile--container">
+                        <div class="profile--bio">
+                            <div class="profile--avatar">
+                                <a href="https://github.com/account" class="avatar--link">
+                                    <img title="Change your profile picture" style="height:auto;" alt="" width="260" height="260" class="avatar avatar-user" id="avatar" src="https://avatars.githubusercontent.com/u/29546622?v=4">
+                                </a>
+                            </div>
+                            <div class="profile--name">
+                                <h1 class="name--wrapper">
+                                    <span class="full--name" id="fullname">callezenwaka</span>
+                                    <span class="user--name" id="shortname">callezenwaka</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="profile--status">
+                            <div class="status--wrapper">
+                                <div class="status--emoji">
+                                    <svg class="emoji--item" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                        <path fill-rule="evenodd" fill="#586069" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM5 8a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zM5.32 9.636a.75.75 0 011.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0 1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 111.222.87l-.614-.431c.614.43.614.431.613.431v.001l-.001.002-.002.003-.005.007-.014.019a1.984 1.984 0 01-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946 0-1.652-.308-2.126-.63a3.32 3.32 0 01-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 01.183-1.044h.001z"></path>
+                                    </svg>
+                                </div>
+                                <div class="status--text">
+                                    <span class="color-text-secondary">Set status</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Profile--description">
+                            <div class="profile--skills" id="bio">
+                                Biomedical engineer|programmer|web development enthusiast | Twitter: 
+                                <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/callezenwaka/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/callezenwaka">@callezenwaka</a>
+                            </div>
+                        </div>
+                        <div class="profile--edit">
+                            <button name="button" type="button" class="btn btn--block">Edit profile</button>
+                        </div>
+                        <div class="profile--interactions">
+                            <div class="interactions--wrapper">
+                                <a class="interaction--link" href="https://github.com/callezenwaka?tab=followers">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="interaction--item">
+                                        <path fill-rule="evenodd" d="M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z"></path>
+                                    </svg>
+                                    <span class="" id="followers">4</span>
+                                    followers
+                                </a>
+                                ·
+                                <a class="interaction--link" href="https://github.com/callezenwaka?tab=following">
+                                    <span class="" id="following">33</span>
+                                    following
+                                </a>
+                                ·
+                                <a class="interaction--link" href="https://github.com/callezenwaka?tab=stars">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="interaction--item">
+                                        <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+                                    </svg>
+                                    <span class="" id="starred">133</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="profile--achievements">
+                            <h2 class="achievement--header">Achievements</h2>
+                            <div class="badge--wrapper">
+                                <div class="position-relative">
+                                    <a href="https://archiveprogram.github.com/" class="d-inline-block">
+                                        <img alt="Arctic Code Vault Contributor" width="64px" src="https://github.githubassets.com/images/modules/profile/badge--acv-64.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main--container">
+                        <div class="main--nav--small main--wrapper" style="z-index:3;">
+                            <nav class="main--nav" data-pjax="" aria-label="User profile">
+                                <a class="nav--link" href="/callezenwaka">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                        <path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path>
+                                    </svg>
+                                    Overview
+                                </a>
+                                <a aria-current="page" class="nav--link selected" href="/callezenwaka?tab=repositories">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                        <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+                                    </svg>
+                                    Repositories
+                                    <span title="60" data-view-component="true" id="repositories" class="counter">60</span>
+                                </a>
+                                <a class="nav--link" href="/callezenwaka?tab=projects">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                        <path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path>
+                                    </svg>
+                                    Projects
+                                    <span title="0" style="display: none!important;" data-view-component="true" class="counter">0</span>
+                                </a>
+                                    <a class="nav--link" href="/callezenwaka?tab=packages">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="octicon octicon-package UnderlineNav-octicon hide-sm">
+                                        <path fill-rule="evenodd" d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z"></path>
+                                    </svg>
+                                    Packages
+                                </a>
+                            </nav>
+                        </div>
+                        <div>
+                            <div class="main--repo">
+                                <div class="repo--header">
+                                    <a href="/new" class="btn new--link">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="octicon octicon-repo mr-1">
+                                            <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+                                        </svg>
+                                        New
+                                    </a>
+                                    <div class="filter">
+                                        <form>
+                                            <div class="form--wrapper">
+                                                <div class=form--item>
+                                                    <input type="hidden" name="tab" value="repositories">
+                                                    <input type="search" id="your-repos-filter" name="q" class="form--input" placeholder="Find a repository…" autocomplete="off" aria-label="Find a repository…" value="" data-throttled-autosubmit="">
+                                                </div>
+                                                <div class="form--options">
+                                                    <details class="option--item" id="type--options" style="margin-left:0px!important">
+                                                        <summary class="btn" aria-haspopup="menu" role="button">
+                                                            <span>Type</span>
+                                                            <span>&#9662;</span>
+                                                        </summary>
+                                                    </details>
+                                                    <details class="option--item" id="language--options">
+                                                        <summary class="btn" aria-haspopup="menu" role="button">
+                                                            <span>Language</span>
+                                                            <span>&#9662;</span>
+                                                        </summary>
+                                                    </details>
+                                                    <details class="option--item" id="sort--options">
+                                                        <summary class="btn" aria-haspopup="menu" role="button">
+                                                            <span>Sort</span>
+                                                            <span>&#9662;</span>
+                                                        </summary>
+                                                    </details>
+                                                </div>
                                             </div>
+                                        </form>
+                                        <div class="new--link--big">
+                                            <a href="/new" class="new--link--big--item btn">
+                                                <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="icon">
+                                                    <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+                                                </svg>
+                                                New
+                                            </a>
                                         </div>
                                     </div>
-                                </li>
-                            </ul>
-                            <div class="paginate--container">
-                                <div class="btn--group" data-test-selector="pagination">
-                                    <button class="btn btn--outline btn--group--item" disabled="disabled">Previous</button>
-                                    <a rel="nofollow" class="btn btn-outline btn--group--item" href="#">Next</a>  
+                                </div>
+                                <div class="repo--list" id="user-repositories-list">
+                                    <ul data-filterable-for="your-repos-filter" data-filterable-type="substring" id="reposContainer">
+                                        <!-- <li class="list--item">
+                                            <div class="repo--wrapper">
+                                                <div class="repo--item">
+                                                    <h3 class="">
+                                                        <a href="/callezenwaka/eatwell" class="repo--link">eatwell</a>
+                                                    </h3>
+                                                    <span class="fork--item">
+                                                        Forked from
+                                                        <a class="fork--link" href="/MicrosoftDocs/ml-basics">MicrosoftDocs/ml-basics</a>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="repo--description" itemprop="description">
+                                                        Exercise notebooks for Machine Learning modules on Microsoft Learn
+                                                    </p>
+                                                </div>
+                                                <div class="repo--footer">
+                                                    <span class="language--wrapper">
+                                                        <span class="repo-language-color" style="background-color: #2c3e50"></span>
+                                                        <span itemprop="programmingLanguage">Vue</span>
+                                                    </span>
+                                                    <a class="forked--icon" href="/callezenwaka/ml-basics/network/members">
+                                                        <svg aria-label="fork" role="img" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                                            <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+                                                        </svg>
+                                                        700
+                                                    </a>
+                                                    <span class="license">
+                                                        <svg class="" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M8.75.75a.75.75 0 00-1.5 0V2h-.984c-.305 0-.604.08-.869.23l-1.288.737A.25.25 0 013.984 3H1.75a.75.75 0 000 1.5h.428L.066 9.192a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.514 3.514 0 00.686.45A4.492 4.492 0 003 11c.88 0 1.556-.22 2.023-.454a3.515 3.515 0 00.686-.45l.045-.04.016-.015.006-.006.002-.002.001-.002L5.25 9.5l.53.53a.75.75 0 00.154-.838L3.822 4.5h.162c.305 0 .604-.08.869-.23l1.289-.737a.25.25 0 01.124-.033h.984V13h-2.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-2.5V3.5h.984a.25.25 0 01.124.033l1.29.736c.264.152.563.231.868.231h.162l-2.112 4.692a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.517 3.517 0 00.686.45A4.492 4.492 0 0013 11c.88 0 1.556-.22 2.023-.454a3.512 3.512 0 00.686-.45l.045-.04.01-.01.006-.005.006-.006.002-.002.001-.002-.529-.531.53.53a.75.75 0 00.154-.838L13.823 4.5h.427a.75.75 0 000-1.5h-2.234a.25.25 0 01-.124-.033l-1.29-.736A1.75 1.75 0 009.735 2H8.75V.75zM1.695 9.227c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327l-1.305 2.9zm10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327l-1.305 2.9z"></path> 
+                                                        </svg>
+                                                        MIT License
+                                                    </span>
+                                                    Updated
+                                                    <relative-time datetime="2021-05-27T13:43:40Z" class="repo--update" title="May 27, 2021, 2:43 PM GMT+1">2 days ago</relative-time>
+                                                </div>
+                                            </div>
+                                            <div class="star--wrapper">
+                                                <div class="star--align">
+                                                    <div class="star--display">
+                                                        <form class="" action="/callezenwaka/ml-basics/star" method="post">
+                                                            <input type="hidden" name="context" value="user_stars">
+                                                            <button class="btn star--btn" type="submit" aria-label="Star this repository" title="Star callezenwaka/ml-basics">
+                                                                <svg class="octicon octicon-star mr-1" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+                                                                </svg>
+                                                                Star
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list--item">
+                                            <div class="repo--wrapper">
+                                                <div class="repo--item">
+                                                    <h3 class="">
+                                                        <a href="/callezenwaka/eatwell" class="repo--link">eatwell</a>
+                                                    </h3>
+                                                    <span class="fork--item">
+                                                        Forked from
+                                                        <a class="fork--link" href="/MicrosoftDocs/ml-basics">MicrosoftDocs/ml-basics</a>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="repo--description" itemprop="description">
+                                                        Exercise notebooks for Machine Learning modules on Microsoft Learn
+                                                    </p>
+                                                </div>
+                                                <div class="repo--footer">
+                                                    <span class="language--wrapper">
+                                                        <span class="repo-language-color" style="background-color: #2c3e50"></span>
+                                                        <span itemprop="programmingLanguage">Vue</span>
+                                                    </span>
+                                                    <a class="forked--icon" href="/callezenwaka/ml-basics/network/members">
+                                                        <svg aria-label="fork" role="img" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                                            <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+                                                        </svg>
+                                                        700
+                                                    </a>
+                                                    <span class="license">
+                                                        <svg class="" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M8.75.75a.75.75 0 00-1.5 0V2h-.984c-.305 0-.604.08-.869.23l-1.288.737A.25.25 0 013.984 3H1.75a.75.75 0 000 1.5h.428L.066 9.192a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.514 3.514 0 00.686.45A4.492 4.492 0 003 11c.88 0 1.556-.22 2.023-.454a3.515 3.515 0 00.686-.45l.045-.04.016-.015.006-.006.002-.002.001-.002L5.25 9.5l.53.53a.75.75 0 00.154-.838L3.822 4.5h.162c.305 0 .604-.08.869-.23l1.289-.737a.25.25 0 01.124-.033h.984V13h-2.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-2.5V3.5h.984a.25.25 0 01.124.033l1.29.736c.264.152.563.231.868.231h.162l-2.112 4.692a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.517 3.517 0 00.686.45A4.492 4.492 0 0013 11c.88 0 1.556-.22 2.023-.454a3.512 3.512 0 00.686-.45l.045-.04.01-.01.006-.005.006-.006.002-.002.001-.002-.529-.531.53.53a.75.75 0 00.154-.838L13.823 4.5h.427a.75.75 0 000-1.5h-2.234a.25.25 0 01-.124-.033l-1.29-.736A1.75 1.75 0 009.735 2H8.75V.75zM1.695 9.227c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327l-1.305 2.9zm10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327l-1.305 2.9z"></path> 
+                                                        </svg>
+                                                        MIT License
+                                                    </span>
+                                                    Updated
+                                                    <relative-time datetime="2021-05-27T13:43:40Z" class="repo--update" title="May 27, 2021, 2:43 PM GMT+1">2 days ago</relative-time>
+                                                </div>
+                                            </div>
+                                            <div class="star--wrapper">
+                                                <div class="star--align">
+                                                    <div class="star--display">
+                                                        <form class="" action="/callezenwaka/ml-basics/star" method="post">
+                                                            <input type="hidden" name="context" value="user_stars">
+                                                            <button class="btn star--btn" type="submit" aria-label="Star this repository" title="Star callezenwaka/ml-basics">
+                                                                <svg class="octicon octicon-star mr-1" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+                                                                </svg>
+                                                                Star
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list--item">
+                                            <div class="repo--wrapper">
+                                                <div class="repo--item">
+                                                    <h3 class="">
+                                                        <a href="/callezenwaka/eatwell" class="repo--link">eatwell</a>
+                                                    </h3>
+                                                    <span class="fork--item">
+                                                        Forked from
+                                                        <a class="fork--link" href="/MicrosoftDocs/ml-basics">MicrosoftDocs/ml-basics</a>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="repo--description" itemprop="description">
+                                                        Exercise notebooks for Machine Learning modules on Microsoft Learn
+                                                    </p>
+                                                </div>
+                                                <div class="repo--footer">
+                                                    <span class="language--wrapper">
+                                                        <span class="repo-language-color" style="background-color: #2c3e50"></span>
+                                                        <span itemprop="programmingLanguage">Vue</span>
+                                                    </span>
+                                                    <a class="forked--icon" href="/callezenwaka/ml-basics/network/members">
+                                                        <svg aria-label="fork" role="img" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                                            <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+                                                        </svg>
+                                                        700
+                                                    </a>
+                                                    <span class="license">
+                                                        <svg class="" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M8.75.75a.75.75 0 00-1.5 0V2h-.984c-.305 0-.604.08-.869.23l-1.288.737A.25.25 0 013.984 3H1.75a.75.75 0 000 1.5h.428L.066 9.192a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.514 3.514 0 00.686.45A4.492 4.492 0 003 11c.88 0 1.556-.22 2.023-.454a3.515 3.515 0 00.686-.45l.045-.04.016-.015.006-.006.002-.002.001-.002L5.25 9.5l.53.53a.75.75 0 00.154-.838L3.822 4.5h.162c.305 0 .604-.08.869-.23l1.289-.737a.25.25 0 01.124-.033h.984V13h-2.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-2.5V3.5h.984a.25.25 0 01.124.033l1.29.736c.264.152.563.231.868.231h.162l-2.112 4.692a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.517 3.517 0 00.686.45A4.492 4.492 0 0013 11c.88 0 1.556-.22 2.023-.454a3.512 3.512 0 00.686-.45l.045-.04.01-.01.006-.005.006-.006.002-.002.001-.002-.529-.531.53.53a.75.75 0 00.154-.838L13.823 4.5h.427a.75.75 0 000-1.5h-2.234a.25.25 0 01-.124-.033l-1.29-.736A1.75 1.75 0 009.735 2H8.75V.75zM1.695 9.227c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327l-1.305 2.9zm10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327l-1.305 2.9z"></path> 
+                                                        </svg>
+                                                        MIT License
+                                                    </span>
+                                                    Updated
+                                                    <relative-time datetime="2021-05-27T13:43:40Z" class="repo--update" title="May 27, 2021, 2:43 PM GMT+1">2 days ago</relative-time>
+                                                </div>
+                                            </div>
+                                            <div class="star--wrapper">
+                                                <div class="star--align">
+                                                    <div class="star--display">
+                                                        <form class="" action="/callezenwaka/ml-basics/star" method="post">
+                                                            <input type="hidden" name="context" value="user_stars">
+                                                            <button class="btn star--btn" type="submit" aria-label="Star this repository" title="Star callezenwaka/ml-basics">
+                                                                <svg class="octicon octicon-star mr-1" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+                                                                </svg>
+                                                                Star
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list--item">
+                                            <div class="repo--wrapper">
+                                                <div class="repo--item">
+                                                    <h3 class="">
+                                                        <a href="/callezenwaka/eatwell" class="repo--link">eatwell</a>
+                                                    </h3>
+                                                    <span class="fork--item">
+                                                        Forked from
+                                                        <a class="fork--link" href="/MicrosoftDocs/ml-basics">MicrosoftDocs/ml-basics</a>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="repo--description" itemprop="description">
+                                                        Exercise notebooks for Machine Learning modules on Microsoft Learn
+                                                    </p>
+                                                </div>
+                                                <div class="repo--footer">
+                                                    <span class="language--wrapper">
+                                                        <span class="repo-language-color" style="background-color: #2c3e50"></span>
+                                                        <span itemprop="programmingLanguage">Vue</span>
+                                                    </span>
+                                                    <a class="forked--icon" href="/callezenwaka/ml-basics/network/members">
+                                                        <svg aria-label="fork" role="img" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                                            <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+                                                        </svg>
+                                                        700
+                                                    </a>
+                                                    <span class="license">
+                                                        <svg class="" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M8.75.75a.75.75 0 00-1.5 0V2h-.984c-.305 0-.604.08-.869.23l-1.288.737A.25.25 0 013.984 3H1.75a.75.75 0 000 1.5h.428L.066 9.192a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.514 3.514 0 00.686.45A4.492 4.492 0 003 11c.88 0 1.556-.22 2.023-.454a3.515 3.515 0 00.686-.45l.045-.04.016-.015.006-.006.002-.002.001-.002L5.25 9.5l.53.53a.75.75 0 00.154-.838L3.822 4.5h.162c.305 0 .604-.08.869-.23l1.289-.737a.25.25 0 01.124-.033h.984V13h-2.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-2.5V3.5h.984a.25.25 0 01.124.033l1.29.736c.264.152.563.231.868.231h.162l-2.112 4.692a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.517 3.517 0 00.686.45A4.492 4.492 0 0013 11c.88 0 1.556-.22 2.023-.454a3.512 3.512 0 00.686-.45l.045-.04.01-.01.006-.005.006-.006.002-.002.001-.002-.529-.531.53.53a.75.75 0 00.154-.838L13.823 4.5h.427a.75.75 0 000-1.5h-2.234a.25.25 0 01-.124-.033l-1.29-.736A1.75 1.75 0 009.735 2H8.75V.75zM1.695 9.227c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327l-1.305 2.9zm10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327l-1.305 2.9z"></path> 
+                                                        </svg>
+                                                        MIT License
+                                                    </span>
+                                                    Updated
+                                                    <relative-time datetime="2021-05-27T13:43:40Z" class="repo--update" title="May 27, 2021, 2:43 PM GMT+1">2 days ago</relative-time>
+                                                </div>
+                                            </div>
+                                            <div class="star--wrapper">
+                                                <div class="star--align">
+                                                    <div class="star--display">
+                                                        <form class="" action="/callezenwaka/ml-basics/star" method="post">
+                                                            <input type="hidden" name="context" value="user_stars">
+                                                            <button class="btn star--btn" type="submit" aria-label="Star this repository" title="Star callezenwaka/ml-basics">
+                                                                <svg class="octicon octicon-star mr-1" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+                                                                </svg>
+                                                                Star
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list--item">
+                                            <div class="repo--wrapper">
+                                                <div class="repo--item">
+                                                    <h3 class="">
+                                                        <a href="/callezenwaka/eatwell" class="repo--link">eatwell</a>
+                                                    </h3>
+                                                    <span class="fork--item">
+                                                        Forked from
+                                                        <a class="fork--link" href="/MicrosoftDocs/ml-basics">MicrosoftDocs/ml-basics</a>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="repo--description" itemprop="description">
+                                                        Exercise notebooks for Machine Learning modules on Microsoft Learn
+                                                    </p>
+                                                </div>
+                                                <div class="repo--footer">
+                                                    <span class="language--wrapper">
+                                                        <span class="repo-language-color" style="background-color: #2c3e50"></span>
+                                                        <span itemprop="programmingLanguage">Vue</span>
+                                                    </span>
+                                                    <a class="forked--icon" href="/callezenwaka/ml-basics/network/members">
+                                                        <svg aria-label="fork" role="img" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="">
+                                                            <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+                                                        </svg>
+                                                        700
+                                                    </a>
+                                                    <span class="license">
+                                                        <svg class="" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M8.75.75a.75.75 0 00-1.5 0V2h-.984c-.305 0-.604.08-.869.23l-1.288.737A.25.25 0 013.984 3H1.75a.75.75 0 000 1.5h.428L.066 9.192a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.514 3.514 0 00.686.45A4.492 4.492 0 003 11c.88 0 1.556-.22 2.023-.454a3.515 3.515 0 00.686-.45l.045-.04.016-.015.006-.006.002-.002.001-.002L5.25 9.5l.53.53a.75.75 0 00.154-.838L3.822 4.5h.162c.305 0 .604-.08.869-.23l1.289-.737a.25.25 0 01.124-.033h.984V13h-2.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-2.5V3.5h.984a.25.25 0 01.124.033l1.29.736c.264.152.563.231.868.231h.162l-2.112 4.692a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.517 3.517 0 00.686.45A4.492 4.492 0 0013 11c.88 0 1.556-.22 2.023-.454a3.512 3.512 0 00.686-.45l.045-.04.01-.01.006-.005.006-.006.002-.002.001-.002-.529-.531.53.53a.75.75 0 00.154-.838L13.823 4.5h.427a.75.75 0 000-1.5h-2.234a.25.25 0 01-.124-.033l-1.29-.736A1.75 1.75 0 009.735 2H8.75V.75zM1.695 9.227c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327l-1.305 2.9zm10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327l-1.305 2.9z"></path> 
+                                                        </svg>
+                                                        MIT License
+                                                    </span>
+                                                    Updated
+                                                    <relative-time datetime="2021-05-27T13:43:40Z" class="repo--update" title="May 27, 2021, 2:43 PM GMT+1">2 days ago</relative-time>
+                                                </div>
+                                            </div>
+                                            <div class="star--wrapper">
+                                                <div class="star--align">
+                                                    <div class="star--display">
+                                                        <form class="" action="/callezenwaka/ml-basics/star" method="post">
+                                                            <input type="hidden" name="context" value="user_stars">
+                                                            <button class="btn star--btn" type="submit" aria-label="Star this repository" title="Star callezenwaka/ml-basics">
+                                                                <svg class="octicon octicon-star mr-1" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+                                                                </svg>
+                                                                Star
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li> -->
+                                    </ul>
+                                    <div class="paginate--container">
+                                        <div class="btn--group" data-test-selector="pagination">
+                                            <button class="btn btn--outline btn--group--item" disabled="disabled">Previous</button>
+                                            <a rel="nofollow" class="btn btn-outline btn--group--item" href="#">Next</a>  
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
