@@ -4,10 +4,9 @@ Buycoins Frontend role github clone challenge
 # Find the demo page
 <a href="https://buycoins-github-challenge.netlify.app/">Demo Page</a>
 
-# Resources:
-## https://docs.github.com/en/graphql
-## https://docs.github.com/en/graphql/overview/explorer
-## https://www.javascripttutorial.net/javascript-fetch-api/#:~:text=The%20Fetch%20API%20allows%20you,resolve%20into%20the%20actual%20data.
+## Resources:
+### https://docs.github.com/en/graphql
+### https://docs.github.com/en/graphql/overview/explorer
 # To recreate
 ### Clone the repo
 ```
