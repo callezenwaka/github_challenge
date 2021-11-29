@@ -5,8 +5,8 @@ Buycoins Frontend role github clone challenge
 <a href="https://buycoins-github-challenge.netlify.app/">Demo Page</a>
 
 ## Resources:
-### https://docs.github.com/en/graphql
-### https://docs.github.com/en/graphql/overview/explorer
+* https://docs.github.com/en/graphql
+* https://docs.github.com/en/graphql/overview/explorer
 # To recreate
 ### Clone the repo
 ```
