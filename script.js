@@ -5,7 +5,7 @@ const baseUrl = "https://api.github.com/graphql";
 
 // get github token
 const github_data = {
-    "token": "<PERSONAL_ACCESS_TOKENS>",
+    "token":process.env.TOKEN,
     // "hinsencamp": "hinsencamp",
 }
 
